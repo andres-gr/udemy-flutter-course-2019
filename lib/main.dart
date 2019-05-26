@@ -11,14 +11,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      key: Key('MAPP'),
       home: Scaffold(
+        key: Key('MAPP_SCAFFOLD'),
         appBar: AppBar(
+          key: Key('MAPP_APPBAR'),
           title: Text('EasyList'),
         ),
         body: Center(
+          key: Key('MAPP_BODY_CENTER'),
           child: Column(
+            key: Key('MAPP_BODY_COLUMN'),
             children: <Widget>[
               ProductManager(
+                key: Key('PRODUCT_MANAGER'),
                 initialProduct: 'Food Tester',
               )
             ],
