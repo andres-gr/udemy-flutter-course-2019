@@ -12,6 +12,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       key: Key('MAPP'),
+      theme: ThemeData(
+        brightness: Brightness.light,
+        primarySwatch: Colors.deepOrange,
+        accentColor: Colors.deepPurple,
+      ),
       home: Scaffold(
         key: Key('MAPP_SCAFFOLD'),
         appBar: AppBar(
