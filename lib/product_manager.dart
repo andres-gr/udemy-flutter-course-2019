@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:udemy_tutorial/product_control.dart';
 import 'package:udemy_tutorial/products.dart';
 
 class ProductManager extends StatefulWidget {
@@ -15,7 +17,7 @@ class ProductManager extends StatefulWidget {
 }
 
 class _ProductManagerState extends State<ProductManager> {
-  List<String> _products = [];
+  final List<String> _products = [];
 
   @override
   void initState() {
@@ -23,16 +25,16 @@ class _ProductManagerState extends State<ProductManager> {
     print('ProductManager initState');
     _products.add(widget.initialProduct);
   }
-  
+
   @override
-  void didUpdateWidget (ProductManager oldWidget) {
+  void didUpdateWidget(ProductManager oldWidget) {
     super.didUpdateWidget(oldWidget);
     print('ProductManager updated');
   }
 
-  void _handlePress() {
+  void _handlePress(String product) {
     setState(() {
-      _products.add('New Product');
+      _products.add(product);
     });
   }
 
@@ -40,19 +42,18 @@ class _ProductManagerState extends State<ProductManager> {
   Widget build(BuildContext context) {
     print('ProductManager build');
     return Column(
-      key: Key('PRODUCT_MANAGER_COLUMN'),
+      key: const Key('PRODUCT_MANAGER_COLUMN'),
       children: <Widget>[
         Container(
-          key: Key('PRODUCT_MANAGER_BUTTON_CONTAINER'),
+          key: const Key('PRODUCT_MANAGER_BUTTON_CONTAINER'),
           margin: EdgeInsets.all(8.0),
-          child: RaisedButton(
-            key: Key('PRODUCT_MANAGER_BUTTON'),
-            onPressed: _handlePress,
-            child: Text('Add Product'),
+          child: ProductControl(
+            key: const Key('PRODUCT_CONTROL'),
+            handlePress: _handlePress,
           ),
         ),
         Products(
-          key: Key('PRODUCTS'),
+          key: const Key('PRODUCTS'),
           products: _products,
         ),
       ],

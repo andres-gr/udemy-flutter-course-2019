@@ -12,7 +12,7 @@ class Products extends StatelessWidget {
 
   Card buildCard(String product) => Card(
         child: Column(
-          key: Key('BUILDCARD_COLUMN'),
+          key: const Key('BUILDCARD_COLUMN'),
           children: <Widget>[
             Image.asset('assets/food.jpg'),
             Text(product),
@@ -24,7 +24,7 @@ class Products extends StatelessWidget {
   Widget build(BuildContext context) {
     print('Products build');
     return Column(
-      key: Key('PRODUCTS_BUILD_COLUMN'),
+      key: const Key('PRODUCTS_BUILD_COLUMN'),
       children: products.map((String product) => buildCard(product)).toList(),
     );
   }
