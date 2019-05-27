@@ -6,7 +6,7 @@ import 'package:udemy_tutorial/products.dart';
 class ProductManager extends StatefulWidget {
   ProductManager({
     Key key,
-    @required this.initialProduct,
+    this.initialProduct,
   }) : super(key: key) {
     print('ProductManager construct');
   }
@@ -23,7 +23,9 @@ class _ProductManagerState extends State<ProductManager> {
   void initState() {
     super.initState();
     print('ProductManager initState');
-    _products.add(widget.initialProduct);
+    if (widget.initialProduct != null) {
+      _products.add(widget.initialProduct);
+    }
   }
 
   @override

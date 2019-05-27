@@ -20,8 +20,24 @@ class Products extends StatelessWidget {
         ),
       );
 
-  Widget _buildProductItem(BuildContext context, int index) {
-    return _buildCard(products[index]);
+  Widget _buildProductItem(
+    BuildContext context,
+    int index,
+  ) =>
+      _buildCard(products[index]);
+
+  Widget _buildList() {
+    if (products.length == 0) {
+      return Center(
+        key: Key('ProductListViewCenter'),
+        child: const Text('No products found'),
+      );
+    }
+    return ListView.builder(
+      key: const Key('ProductsListViewBuilder'),
+      itemCount: products.length,
+      itemBuilder: _buildProductItem,
+    );
   }
 
   @override
@@ -29,11 +45,7 @@ class Products extends StatelessWidget {
     print('Products build');
     return Expanded(
       key: Key('ProductsExpanded'),
-      child: ListView.builder(
-        key: const Key('ProductsListViewBuilder'),
-        itemCount: products.length,
-        itemBuilder: _buildProductItem,
-      ),
+      child: _buildList(),
     );
   }
 }

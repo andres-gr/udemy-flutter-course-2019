@@ -28,7 +28,6 @@ class MyApp extends StatelessWidget {
           key: const Key('MAppBodyCenter'),
           child: ProductManager(
             key: const Key('ProductManager'),
-            initialProduct: 'Food Tester',
           ),
         ),
       ),
