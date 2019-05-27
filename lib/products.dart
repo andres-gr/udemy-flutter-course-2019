@@ -10,9 +10,9 @@ class Products extends StatelessWidget {
 
   final List<String> products;
 
-  Card buildCard(String product) => Card(
+  Card _buildCard(String product) => Card(
         child: Column(
-          key: const Key('BUILDCARD_COLUMN'),
+          key: const Key('BuildCardColumn'),
           children: <Widget>[
             Image.asset('assets/food.jpg'),
             Text(product),
@@ -20,12 +20,20 @@ class Products extends StatelessWidget {
         ),
       );
 
+  Widget _buildProductItem(BuildContext context, int index) {
+    return _buildCard(products[index]);
+  }
+
   @override
   Widget build(BuildContext context) {
     print('Products build');
-    return Column(
-      key: const Key('PRODUCTS_BUILD_COLUMN'),
-      children: products.map((String product) => buildCard(product)).toList(),
+    return Expanded(
+      key: Key('ProductsExpanded'),
+      child: ListView.builder(
+        key: const Key('ProductsListViewBuilder'),
+        itemCount: products.length,
+        itemBuilder: _buildProductItem,
+      ),
     );
   }
 }

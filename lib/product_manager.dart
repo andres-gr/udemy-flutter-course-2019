@@ -42,18 +42,18 @@ class _ProductManagerState extends State<ProductManager> {
   Widget build(BuildContext context) {
     print('ProductManager build');
     return Column(
-      key: const Key('PRODUCT_MANAGER_COLUMN'),
+      key: const Key('ProductManagerColumn'),
       children: <Widget>[
         Container(
-          key: const Key('PRODUCT_MANAGER_BUTTON_CONTAINER'),
+          key: const Key('ProductManagerColumnContainer'),
           margin: EdgeInsets.all(8.0),
           child: ProductControl(
-            key: const Key('PRODUCT_CONTROL'),
+            key: const Key('ProductControl'),
             handlePress: _handlePress,
           ),
         ),
         Products(
-          key: const Key('PRODUCTS'),
+          key: const Key('Products'),
           products: _products,
         ),
       ],

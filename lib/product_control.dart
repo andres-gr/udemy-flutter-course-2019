@@ -11,7 +11,7 @@ class ProductControl extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RaisedButton(
-      key: const Key('PRODUCT_MANAGER_BUTTON'),
+      key: const Key('ProductManagerRaisedButton'),
       onPressed: () => handlePress('Sweets'),
       child: const Text('Add Product'),
     );

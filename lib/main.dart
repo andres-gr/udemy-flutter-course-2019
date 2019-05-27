@@ -12,28 +12,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      key: const Key('MAPP'),
+      key: const Key('MApp'),
       theme: ThemeData(
         brightness: Brightness.light,
         primarySwatch: Colors.deepOrange,
         accentColor: Colors.deepPurple,
       ),
       home: Scaffold(
-        key: const Key('MAPP_SCAFFOLD'),
+        key: const Key('MAppScaffold'),
         appBar: AppBar(
-          key: const Key('MAPP_APPBAR'),
+          key: const Key('MAppAppBar'),
           title: const Text('EasyList'),
         ),
         body: Center(
-          key: const Key('MAPP_BODY_CENTER'),
-          child: Column(
-            key: const Key('MAPP_BODY_COLUMN'),
-            children: <Widget>[
-              ProductManager(
-                key: const Key('PRODUCT_MANAGER'),
-                initialProduct: 'Food Tester',
-              )
-            ],
+          key: const Key('MAppBodyCenter'),
+          child: ProductManager(
+            key: const Key('ProductManager'),
+            initialProduct: 'Food Tester',
           ),
         ),
       ),
