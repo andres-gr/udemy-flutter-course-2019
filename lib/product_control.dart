@@ -12,8 +12,10 @@ class ProductControl extends StatelessWidget {
   Widget build(BuildContext context) {
     return RaisedButton(
       key: const Key('ProductManagerRaisedButton'),
-      onPressed: () => handlePress('Sweets'),
+      color: Theme.of(context).primaryColor,
+      textColor: Colors.white,
       child: const Text('Add Product'),
+      onPressed: () => handlePress('Sweets'),
     );
   }
 }

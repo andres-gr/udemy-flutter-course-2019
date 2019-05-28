@@ -14,21 +14,29 @@ class ProductScreen extends StatelessWidget {
         key: generateKey(),
         title: const Text('Product Details'),
       ),
-      body: Center(
+      body: Column(
         key: generateKey(),
-        child: Column(
-          key: generateKey(),
-          children: <Widget>[
-            const Text('Product Screen'),
-            RaisedButton(
+        children: <Widget>[
+          Image.asset('assets/food.jpg'),
+          Container(
+            key: generateKey(),
+            margin: EdgeInsets.all(8.0),
+            child: const Text('Product Screen'),
+          ),
+          Container(
+            key: generateKey(),
+            margin: EdgeInsets.all(8.0),
+            child: RaisedButton(
               key: generateKey(),
+              color: Theme.of(context).accentColor,
+              textColor: Colors.white,
               child: const Text('BACK'),
               onPressed: () {
                 Navigator.pop(context);
               },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
