@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:udemy_tutorial/product_manager.dart';
+import 'package:udemy_tutorial/screens/home.dart';
+import 'package:udemy_tutorial/utils/key_generator.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,25 +13,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      key: const Key('MApp'),
+      key: generateKey(),
       theme: ThemeData(
         brightness: Brightness.light,
         primarySwatch: Colors.deepOrange,
         accentColor: Colors.deepPurple,
       ),
-      home: Scaffold(
-        key: const Key('MAppScaffold'),
-        appBar: AppBar(
-          key: const Key('MAppAppBar'),
-          title: const Text('EasyList'),
-        ),
-        body: Center(
-          key: const Key('MAppBodyCenter'),
-          child: ProductManager(
-            key: const Key('ProductManager'),
-          ),
-        ),
-      ),
+      home: HomeScreen(),
     );
   }
 }

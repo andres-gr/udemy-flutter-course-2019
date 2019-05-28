@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:udemy_tutorial/screens/product.dart';
+import 'package:udemy_tutorial/utils/key_generator.dart';
+
 class Products extends StatelessWidget {
   Products({
     Key key,
@@ -10,12 +13,34 @@ class Products extends StatelessWidget {
 
   final List<String> products;
 
-  Card _buildCard(String product) => Card(
+  Card _buildCard({
+    BuildContext context,
+    String product,
+  }) =>
+      Card(
         child: Column(
-          key: const Key('BuildCardColumn'),
+          key: generateKey(),
           children: <Widget>[
             Image.asset('assets/food.jpg'),
             Text(product),
+            ButtonBar(
+              key: generateKey(),
+              alignment: MainAxisAlignment.center,
+              children: <Widget>[
+                FlatButton(
+                  key: generateKey(),
+                  child: const Text('Details'),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => ProductScreen(),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
           ],
         ),
       );
@@ -24,17 +49,20 @@ class Products extends StatelessWidget {
     BuildContext context,
     int index,
   ) =>
-      _buildCard(products[index]);
+      _buildCard(
+        context: context,
+        product: products[index],
+      );
 
   Widget _buildList() {
     if (products.length == 0) {
       return Center(
-        key: Key('ProductListViewCenter'),
+        key: generateKey(),
         child: const Text('No products found'),
       );
     }
     return ListView.builder(
-      key: const Key('ProductsListViewBuilder'),
+      key: generateKey(),
       itemCount: products.length,
       itemBuilder: _buildProductItem,
     );
@@ -44,7 +72,7 @@ class Products extends StatelessWidget {
   Widget build(BuildContext context) {
     print('Products build');
     return Expanded(
-      key: Key('ProductsExpanded'),
+      key: generateKey(),
       child: _buildList(),
     );
   }
