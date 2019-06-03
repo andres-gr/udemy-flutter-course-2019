@@ -7,22 +7,26 @@ class Products extends StatelessWidget {
   Products({
     Key key,
     @required this.products,
+    @required this.handleDeleteProduct,
   }) : super(key: key) {
     print('Products construct');
   }
 
-  final List<String> products;
+  final List<Map<String, String>> products;
+
+  final Function handleDeleteProduct;
 
   Card _buildCard({
     BuildContext context,
-    String product,
+    Map<String, String> product,
+    int index,
   }) =>
       Card(
         child: Column(
           key: generateKey(),
           children: <Widget>[
-            Image.asset('assets/food.jpg'),
-            Text(product),
+            Image.asset(product['uri']),
+            Text(product['title']),
             ButtonBar(
               key: generateKey(),
               alignment: MainAxisAlignment.center,
@@ -31,12 +35,19 @@ class Products extends StatelessWidget {
                   key: generateKey(),
                   child: const Text('Details'),
                   onPressed: () {
-                    Navigator.push(
+                    Navigator.push<bool>(
                       context,
                       MaterialPageRoute(
-                        builder: (BuildContext context) => ProductScreen(),
+                        builder: (BuildContext context) => ProductScreen(
+                              imageUri: product['uri'],
+                              title: product['title'],
+                            ),
                       ),
-                    );
+                    ).then((bool value) {
+                      if (value) {
+                        handleDeleteProduct(index);
+                      }
+                    });
                   },
                 ),
               ],
@@ -52,6 +63,7 @@ class Products extends StatelessWidget {
       _buildCard(
         context: context,
         product: products[index],
+        index: index,
       );
 
   Widget _buildList() {
