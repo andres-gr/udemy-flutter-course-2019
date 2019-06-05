@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:udemy_tutorial/routes/router.dart';
 import 'package:udemy_tutorial/screens/auth.dart';
 import 'package:udemy_tutorial/utils/key_generator.dart';
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.deepOrange,
         accentColor: Colors.deepPurple,
       ),
-      home: AuthScreen(),
+      routes: routes(context),
     );
   }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:udemy_tutorial/products_drawer.dart';
+import 'package:udemy_tutorial/screens/product_create.dart';
+import 'package:udemy_tutorial/screens/product_list.dart';
 import 'package:udemy_tutorial/screens/products.dart';
 import 'package:udemy_tutorial/utils/key_generator.dart';
 
@@ -28,19 +30,52 @@ class ProductsAdminScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return DefaultTabController(
       key: generateKey(),
-      appBar: AppBar(
+      length: 2,
+      initialIndex: 0,
+      child: Scaffold(
         key: generateKey(),
-        title: const Text('Manage Products'),
-      ),
-      drawer: ProductsDrawer(
-        key: generateKey(),
-        items: _items(context),
-      ),
-      body: Center(
-        key: generateKey(),
-        child: const Text('Manage'),
+        appBar: AppBar(
+          key: generateKey(),
+          title: const Text('Manage Products'),
+          bottom: TabBar(
+            key: generateKey(),
+            tabs: <Widget>[
+              Tab(
+                key: generateKey(),
+                icon: Icon(
+                  Icons.create,
+                  key: generateKey(),
+                ),
+                text: 'Create Product',
+              ),
+              Tab(
+                key: generateKey(),
+                icon: Icon(
+                  Icons.list,
+                  key: generateKey(),
+                ),
+                text: 'My List',
+              ),
+            ],
+          ),
+        ),
+        drawer: ProductsDrawer(
+          key: generateKey(),
+          items: _items(context),
+        ),
+        body: TabBarView(
+          key: generateKey(),
+          children: <Widget>[
+            ProductCreate(
+              key: generateKey(),
+            ),
+            ProductList(
+              key: generateKey(),
+            ),
+          ],
+        ),
       ),
     );
   }

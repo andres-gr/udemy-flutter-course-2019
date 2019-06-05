@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:udemy_tutorial/product_manager.dart';
 import 'package:udemy_tutorial/products_drawer.dart';
-import 'package:udemy_tutorial/screens/products_admin.dart';
 import 'package:udemy_tutorial/utils/key_generator.dart';
 
 class ProductsScreen extends StatelessWidget {
@@ -15,13 +14,9 @@ class ProductsScreen extends StatelessWidget {
           key: generateKey(),
           title: const Text('Manage Products'),
           onTap: () {
-            Navigator.pushReplacement(
+            Navigator.pushReplacementNamed(
               context,
-              MaterialPageRoute(
-                builder: (BuildContext conxtex) => ProductsAdminScreen(
-                      key: generateKey(),
-                    ),
-              ),
+              '/admin',
             );
           },
         ),
