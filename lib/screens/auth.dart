@@ -22,13 +22,10 @@ class AuthScreen extends StatelessWidget {
           key: generateKey(),
           child: const Text('Login'),
           onPressed: () {
-            Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (BuildContext context) => ProductsScreen(
-                    key: generateKey(),
-                  ),
-                ));
+            Navigator.pushReplacementNamed(
+              context,
+              '/',
+            );
           },
         ),
       ),

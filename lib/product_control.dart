@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class ProductControl extends StatelessWidget {
+  final Function handleAddProduct;
+
   const ProductControl({
     Key key,
     @required this.handleAddProduct,
   }) : super(key: key);
-
-  final Function handleAddProduct;
 
   @override
   Widget build(BuildContext context) {

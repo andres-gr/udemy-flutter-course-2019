@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:udemy_tutorial/utils/key_generator.dart';
 
 class ProductScreen extends StatelessWidget {
+  final String title;
+
+  final String imageUri;
+
   ProductScreen({
     Key key,
     @required this.imageUri,
     @required this.title,
   }) : super(key: key);
-
-  final String title;
-
-  final String imageUri;
 
   @override
   Widget build(BuildContext context) {

@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
 
-import 'package:udemy_tutorial/screens/product.dart';
 import 'package:udemy_tutorial/utils/key_generator.dart';
 
 class Products extends StatelessWidget {
-  Products({
-    Key key,
-    @required this.products,
-    @required this.handleDeleteProduct,
-  }) : super(key: key) {
-    print('Products construct');
-  }
-
   final List<Map<String, String>> products;
 
   final Function handleDeleteProduct;
+
+  const Products({
+    Key key,
+    @required this.products,
+    @required this.handleDeleteProduct,
+  }) : super(key: key);
 
   Card _buildCard({
     BuildContext context,
@@ -35,14 +32,9 @@ class Products extends StatelessWidget {
                   key: generateKey(),
                   child: const Text('Details'),
                   onPressed: () {
-                    Navigator.push<bool>(
+                    Navigator.pushNamed<bool>(
                       context,
-                      MaterialPageRoute(
-                        builder: (BuildContext context) => ProductScreen(
-                              imageUri: product['uri'],
-                              title: product['title'],
-                            ),
-                      ),
+                      '/product/${index.toString()}',
                     ).then((bool value) {
                       if (value) {
                         handleDeleteProduct(index);
