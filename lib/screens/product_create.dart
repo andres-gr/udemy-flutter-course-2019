@@ -11,7 +11,19 @@ class ProductCreate extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       key: generateKey(),
-      child: const Text('Create'),
+      child: RaisedButton(
+        key: generateKey(),
+        child: const Text('Save'),
+        onPressed: () {
+          showModalBottomSheet(
+            context: context,
+            builder: (BuildContext context) => Center(
+              key: generateKey(),
+              child: const Text('Modal'),
+            ),
+          );
+        },
+      ),
     );
   }
 }

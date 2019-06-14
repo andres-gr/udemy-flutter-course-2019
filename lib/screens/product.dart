@@ -13,6 +13,37 @@ class ProductScreen extends StatelessWidget {
     @required this.title,
   }) : super(key: key);
 
+  void _handleDelete(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+            key: generateKey(),
+            title: const Text('Are you sure?'),
+            content: const Text('Action cannot be undone!'),
+            actions: <Widget>[
+              FlatButton(
+                key: generateKey(),
+                child: const Text('Cancel'),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+              FlatButton(
+                key: generateKey(),
+                child: const Text('Delete'),
+                onPressed: () {
+                  Navigator.pop(context);
+                  Navigator.pop<bool>(
+                    context,
+                    true,
+                  );
+                },
+              ),
+            ],
+          ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -45,10 +76,7 @@ class ProductScreen extends StatelessWidget {
                 textColor: Colors.white,
                 child: const Text('Delete'),
                 onPressed: () {
-                  Navigator.pop<bool>(
-                    context,
-                    true,
-                  );
+                  _handleDelete(context);
                 },
               ),
             ),
